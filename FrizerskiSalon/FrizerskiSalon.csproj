@@ -52,8 +52,30 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAdminKorisnici.cs" />
+    <Compile Include="Forms\FrmGlavna.cs" />
+    <Compile Include="Forms\FrmIzvestajiPoRadniku.cs" />
+    <Compile Include="Forms\FrmLogin.cs" />
+    <Compile Include="Forms\FrmMojiTermini.cs" />
+    <Compile Include="Forms\FrmSviTermini.cs" />
+    <Compile Include="Forms\FrmZakaziTermin.cs" />
+    <Compile Include="Helpers\FilePaths.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\Dozvola.cs" />
+    <Compile Include="Models\Klijent.cs" />
+    <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Radnik.cs" />
+    <Compile Include="Models\StatusTermina.cs" />
+    <Compile Include="Models\Termin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\KorisnikiRepo.cs" />
+    <Compile Include="Repositories\TerminiRepo.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\IzvestajService.cs" />
+    <Compile Include="Services\KorisnikService.cs" />
+    <Compile Include="Services\TerminService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\izvestaj.txt" />
+    <Content Include="Data\korisnici.txt" />
+    <Content Include="Data\termini.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
