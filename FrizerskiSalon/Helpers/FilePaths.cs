@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Helpers
 {
-    internal class FilePaths
+    public class FilePaths
     {
+        public static string KorisniciPath = "Data\\korisnici.txt";
+        public static string TerminiPath = "Data\\termini.txt";
+        public static string IzvestajPath = "Data\\izvestaj.txt";
     }
 }

@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Models
 {
-    internal class Radnik
+    public class Radnik : Korisnik
     {
+        public string Specijalizacija { get; set; }
+
+        public Radnik(string korisnickoIme, string lozinkaHash, string imePrezime, string specijalizacija)
+            : base(korisnickoIme, lozinkaHash, imePrezime, "RADNIK")
+        {
+            Specijalizacija = specijalizacija;
+        }
+
+        public override string ToString()
+        {
+            return $"U│{KorisnickoIme}│{LozinkaHash}│{ImePrezime}│{Uloga}│{Specijalizacija}";
+        }
     }
 }

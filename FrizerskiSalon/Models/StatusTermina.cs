@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Models
 {
-    internal class StatusTermina
+    public enum StatusTermina
     {
+        ZAKAZAN,
+        OTKAZAN,
+        ODRADJEN
     }
 }

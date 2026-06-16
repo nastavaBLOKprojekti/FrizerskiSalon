@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Models
 {
-    internal class Administrator
+    public class Administrator : Korisnik
     {
+        public Administrator(string korisnickoIme, string lozinkaHash, string imePrezime)
+            : base(korisnickoIme, lozinkaHash, imePrezime, "ADMIN")
+        {
+        }
     }
 }

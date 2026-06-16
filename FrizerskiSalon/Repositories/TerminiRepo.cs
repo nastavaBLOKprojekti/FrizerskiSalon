@@ -1,12 +1,69 @@
-﻿using System;
+﻿using FrizerskiSalon.Helpers;
+using FrizerskiSalon.Models;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Repositories
 {
-    internal class TerminiRepo
+    public class TerminiRepo
     {
+        public List<Termin> UcitajSve()
+        {
+            List<Termin> termini = new List<Termin>();
+
+            if (!File.Exists(FilePaths.TerminiPath))
+                return termini;
+
+            foreach (string linija in File.ReadAllLines(FilePaths.TerminiPath))
+            {
+                string[] delovi = linija.Split('│');
+                if (delovi.Length < 7) continue;
+
+                int id = int.Parse(delovi[1]);
+                string klijent = delovi[2];
+                string radnik = delovi[3];
+                DateTime datum = DateTime.ParseExact(delovi[4], "yyyy-MM-dd HH:mm", null);
+                string usluga = delovi[5];
+                StatusTermina status = (StatusTermina)Enum.Parse(typeof(StatusTermina), delovi[6]);
+                string napomena = delovi.Length > 7 ? delovi[7] : "";
+
+                Termin t = new Termin(id, klijent, radnik, datum, usluga);
+                t.Status = status;
+                t.Napomena = napomena;
+                termini.Add(t);
+            }
+            return termini;
+        }
+
+        public void SacuvajSve(List<Termin> termini)
+        {
+            List<string> linije = new List<string>();
+            foreach (Termin t in termini)
+                linije.Add(t.ToString());
+            File.WriteAllLines(FilePaths.TerminiPath, linije);
+        }
+
+        public void Dodaj(Termin termin)
+        {
+            List<Termin> svi = UcitajSve();
+            termin.Id = svi.Count > 0 ? svi.Max(t => t.Id) + 1 : 1;
+            svi.Add(termin);
+            SacuvajSve(svi);
+        }
+
+        public void Azuriraj(Termin termin)
+        {
+            List<Termin> svi = UcitajSve();
+            int index = svi.FindIndex(t => t.Id == termin.Id);
+            if (index >= 0)
+            {
+                svi[index] = termin;
+                SacuvajSve(svi);
+            }
+        }
     }
 }
