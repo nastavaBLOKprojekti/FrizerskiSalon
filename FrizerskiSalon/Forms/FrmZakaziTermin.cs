@@ -55,7 +55,7 @@ namespace FrizerskiSalon.Forms
             DateTime datum = dateTimePickerdatum.Value;
             string usluga = comboBoxusluga.SelectedItem.ToString();
 
-            Termin t = new Termin(0, _korisnik.KorisnickoIme, radnikIme, datum, usluga);
+            Termin t = new Termin(0, _korisnik.Username, radnikIme, datum, usluga);
             _terminService.ZakaziTermin(t);
 
             MessageBox.Show("Termin uspešno zakazan!", "Uspeh");

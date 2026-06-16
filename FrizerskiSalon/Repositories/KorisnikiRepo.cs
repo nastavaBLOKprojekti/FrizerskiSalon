@@ -39,7 +39,8 @@ namespace FrizerskiSalon.Repositories
                         break;
                     case "KLIJENT":
                         string tel = delovi.Length > 5 ? delovi[5] : "";
-                        korisnici.Add(new Klijent(korisnickoIme, lozinkaHash, imePrezime, tel));
+                        string email = delovi.Length > 6 ? delovi[6] : "";
+                        korisnici.Add(new Klijent(korisnickoIme, lozinkaHash, imePrezime, tel, email));
                         break;
                 }
             }
@@ -64,13 +65,13 @@ namespace FrizerskiSalon.Repositories
         public void Obrisi(string korisnickoIme)
         {
             List<Korisnik> svi = UcitajSve();
-            svi.RemoveAll(k => k.KorisnickoIme == korisnickoIme);
+            svi.RemoveAll(k => k.Username == korisnickoIme);
             SacuvajSve(svi);
         }
 
         public Korisnik NadjiPoImenu(string korisnickoIme)
         {
-            return UcitajSve().FirstOrDefault(k => k.KorisnickoIme == korisnickoIme);
+            return UcitajSve().FirstOrDefault(k => k.Username == korisnickoIme);
         }
     }
 }

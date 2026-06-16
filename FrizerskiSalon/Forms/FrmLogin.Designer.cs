@@ -103,7 +103,6 @@
             this.Controls.Add(this.labelkorisnickoime);
             this.Name = "FrmLogin";
             this.Text = "FrmLogin";
-            this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

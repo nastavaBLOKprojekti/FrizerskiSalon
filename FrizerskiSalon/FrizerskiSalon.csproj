@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C139EA9E-F7BC-493B-91B4-284D0423ACDC}</ProjectGuid>
+    <ProjectGuid>{80E824BD-4143-48DD-8160-71A99EAFDA16}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FrizerskiSalon</RootNamespace>
     <AssemblyName>FrizerskiSalon</AssemblyName>
@@ -52,84 +52,17 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmAdminKorisnici.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmAdminKorisnici.Designer.cs">
-      <DependentUpon>FrmAdminKorisnici.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmGlavna.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmGlavna.Designer.cs">
-      <DependentUpon>FrmGlavna.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmIzvestajiPoRadniku.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmIzvestajiPoRadniku.Designer.cs">
-      <DependentUpon>FrmIzvestajiPoRadniku.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmLogin.Designer.cs">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmMojiTermini.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmMojiTermini.Designer.cs">
-      <DependentUpon>FrmMojiTermini.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmSviTermini.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmSviTermini.Designer.cs">
-      <DependentUpon>FrmSviTermini.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FrmZakaziTermin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FrmZakaziTermin.Designer.cs">
-      <DependentUpon>FrmZakaziTermin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\FilePaths.cs" />
-    <Compile Include="Helpers\HashHelper.cs" />
-    <Compile Include="Models\Administrator.cs" />
-    <Compile Include="Models\Dozvola.cs" />
-    <Compile Include="Models\Klijent.cs" />
-    <Compile Include="Models\Korisnik.cs" />
-    <Compile Include="Models\Radnik.cs" />
-    <Compile Include="Models\StatusTermina.cs" />
-    <Compile Include="Models\Termin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\KorisnikiRepo.cs" />
-    <Compile Include="Repositories\TerminiRepo.cs" />
-    <Compile Include="Services\AuthService.cs" />
-    <Compile Include="Services\IzvestajService.cs" />
-    <Compile Include="Services\KorisnikService.cs" />
-    <Compile Include="Services\TerminService.cs" />
-    <EmbeddedResource Include="Forms\FrmGlavna.resx">
-      <DependentUpon>FrmGlavna.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmLogin.resx">
-      <DependentUpon>FrmLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmMojiTermini.resx">
-      <DependentUpon>FrmMojiTermini.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmSviTermini.resx">
-      <DependentUpon>FrmSviTermini.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmZakaziTermin.resx">
-      <DependentUpon>FrmZakaziTermin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,13 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="Data\izvestaj.txt" />
-    <Content Include="Data\korisnici.txt" />
-    <Content Include="Data\termini.txt" />
-    <None Include="Resources\termin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

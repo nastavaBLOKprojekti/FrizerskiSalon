@@ -21,10 +21,6 @@ namespace FrizerskiSalon.Forms
             InitializeComponent();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-        }
-
         private void buttonprijava_Click(object sender, EventArgs e)
         {
             string korisnickoIme = textBoxkorisnickoime.Text.Trim();

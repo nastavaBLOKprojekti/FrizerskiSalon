@@ -24,17 +24,10 @@ namespace FrizerskiSalon.Forms
         {
             labeldobrodosli.Text = $"Dobrodošli, {_prijavljeniKorisnik.ImePrezime}!";
 
-            buttonsvitermini.Visible = false;
-            buttonkorisnici.Visible = false;
-            buttonizvestaj.Visible = false;
-
-            if (_prijavljeniKorisnik.Uloga == "ADMIN")
-            {
-                buttonsvitermini.Visible = true;
-                buttonkorisnici.Visible = true;
-                buttonizvestaj.Visible = true;
-            }
-        }
+            buttonsvitermini.Visible = _prijavljeniKorisnik.Can(Dozvola.PregledSviTermini);
+            buttonkorisnici.Visible = _prijavljeniKorisnik.Can(Dozvola.UpravljanjeKorisnicima);
+            buttonizvestaj.Visible = _prijavljeniKorisnik.Can(Dozvola.Izvestaji);
+        }       
 
         private void btnMojiTermini_Click(object sender, EventArgs e)
         {

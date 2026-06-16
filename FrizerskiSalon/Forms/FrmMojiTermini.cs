@@ -23,8 +23,8 @@ namespace FrizerskiSalon.Forms
         }
         private void FrmMojiTermini_Load(object sender, EventArgs e)
         {
-            buttonzakazitetermin.Visible = _korisnik.Uloga == "KLIJENT";
-            buttonotkazitetermin.Visible = _korisnik.Uloga == "KLIJENT";
+            buttonzakazitetermin.Visible = _korisnik.Can(Dozvola.ZakaziTermin);
+            buttonotkazitetermin.Visible = _korisnik.Can(Dozvola.OtkaziTermin);
 
             UcitajTermine();
         }
@@ -33,10 +33,10 @@ namespace FrizerskiSalon.Forms
         {
             List<Termin> termini;
 
-            if (_korisnik.Uloga == "KLIJENT")
-                termini = _terminService.TerminiZaKlijenta(_korisnik.KorisnickoIme);
+            if (_korisnik.Can(Dozvola.ZakaziTermin))
+                termini = _terminService.TerminiZaKlijenta(_korisnik.Username);
             else
-                termini = _terminService.TerminiZaRadnika(_korisnik.KorisnickoIme);
+                termini = _terminService.TerminiZaRadnika(_korisnik.Username);
 
             dataGridViewtermini.DataSource = termini;
         }

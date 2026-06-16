@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Models
 {
-    public class Korisnik
+    public abstract class Korisnik
     {
-        public string KorisnickoIme { get; set; }
+        public string Username { get; set; }
         public string LozinkaHash { get; set; }
         public string ImePrezime { get; set; }
-        public string Uloga { get; set; }
 
-        public Korisnik(string korisnickoIme, string lozinkaHash, string imePrezime, string uloga)
+        protected List<Dozvola> dozvole = new List<Dozvola>();
+
+        public bool Can(Dozvola d)
         {
-            KorisnickoIme = korisnickoIme;
-            LozinkaHash = lozinkaHash;
-            ImePrezime = imePrezime;
-            Uloga = uloga;
+            foreach (var dozvola in dozvole)
+                if (dozvola == d) return true;
+            return false;
         }
+
+        public abstract string UlogaNaziv();
+        public abstract void UcitajDozvole();
 
         public override string ToString()
         {
-            return $"U│{KorisnickoIme}│{LozinkaHash}│{ImePrezime}│{Uloga}";
+            return $"U│{Username}│{LozinkaHash}│{ImePrezime}│{UlogaNaziv()}";
         }
     }
 }
