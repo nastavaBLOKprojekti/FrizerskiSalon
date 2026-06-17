@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +47,92 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="AuthService.cs" />
+    <Compile Include="Dozvola.cs" />
+    <Compile Include="FilePaths.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAdminKorisnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdminKorisnici.Designer.cs">
+      <DependentUpon>FrmAdminKorisnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGlavna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGlavna.Designer.cs">
+      <DependentUpon>FrmGlavna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIzvestajiPoRadniku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIzvestajiPoRadniku.Designer.cs">
+      <DependentUpon>FrmIzvestajiPoRadniku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMojiTermini.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMojiTermini.Designer.cs">
+      <DependentUpon>FrmMojiTermini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSviTermini.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSviTermini.Designer.cs">
+      <DependentUpon>FrmSviTermini.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmZakaziTermin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmZakaziTermin.Designer.cs">
+      <DependentUpon>FrmZakaziTermin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HashHelper.cs" />
+    <Compile Include="IzvestajService.cs" />
+    <Compile Include="Klijent.cs" />
+    <Compile Include="Korisnik.cs" />
+    <Compile Include="KorisnikiRepo.cs" />
+    <Compile Include="KorisnikService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Radnik.cs" />
+    <Compile Include="StatusTermina.cs" />
+    <Compile Include="Termin.cs" />
+    <Compile Include="TerminiRepo.cs" />
+    <Compile Include="TerminService.cs" />
+    <EmbeddedResource Include="FrmAdminKorisnici.resx">
+      <DependentUpon>FrmAdminKorisnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGlavna.resx">
+      <DependentUpon>FrmGlavna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIzvestajiPoRadniku.resx">
+      <DependentUpon>FrmIzvestajiPoRadniku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMojiTermini.resx">
+      <DependentUpon>FrmMojiTermini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSviTermini.resx">
+      <DependentUpon>FrmSviTermini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmZakaziTermin.resx">
+      <DependentUpon>FrmZakaziTermin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +154,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="izvestaj.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="korisnici.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="termini.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
