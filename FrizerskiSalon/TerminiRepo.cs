@@ -3,13 +3,12 @@ using FrizerskiSalon.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Repositories
 {
-    public class TerminiRepo
+    public class TerminiRepo:IsacuvajPodatke
     {
         public List<Termin> UcitajSve()
         {
@@ -50,7 +49,11 @@ namespace FrizerskiSalon.Repositories
         public void Dodaj(Termin termin)
         {
             List<Termin> svi = UcitajSve();
-            termin.Id = svi.Count > 0 ? svi.Max(t => t.Id) + 1 : 1;
+            int maxId = 0;
+            foreach (Termin t in svi)
+                if (t.Id > maxId)
+                    maxId = t.Id;
+            termin.Id = maxId + 1;
             svi.Add(termin);
             SacuvajSve(svi);
         }
@@ -58,12 +61,25 @@ namespace FrizerskiSalon.Repositories
         public void Azuriraj(Termin termin)
         {
             List<Termin> svi = UcitajSve();
-            int index = svi.FindIndex(t => t.Id == termin.Id);
-            if (index >= 0)
+            for (int i = 0; i < svi.Count; i++)
             {
-                svi[index] = termin;
-                SacuvajSve(svi);
+                if (svi[i].Id == termin.Id)
+                {
+                    svi[i] = termin;
+                    SacuvajSve(svi);
+                    return;
+                }
             }
+        }
+
+        public void Ucitaj()
+        {
+            UcitajSve();
+        }
+
+        public void Sacuvaj()
+        {
+            SacuvajSve(UcitajSve());
         }
     }
 }

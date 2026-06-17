@@ -100,6 +100,7 @@
       <DependentUpon>FrmZakaziTermin.cs</DependentUpon>
     </Compile>
     <Compile Include="HashHelper.cs" />
+    <Compile Include="IsacuvajPodatke.cs" />
     <Compile Include="IzvestajService.cs" />
     <Compile Include="Klijent.cs" />
     <Compile Include="Korisnik.cs" />

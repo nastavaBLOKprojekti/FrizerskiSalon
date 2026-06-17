@@ -3,13 +3,12 @@ using FrizerskiSalon.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Repositories
 {
-    public class KorisniciRepo
+    public class KorisniciRepo:IsacuvajPodatke
     {
         public List<Korisnik> UcitajSve()
         {
@@ -65,13 +64,29 @@ namespace FrizerskiSalon.Repositories
         public void Obrisi(string korisnickoIme)
         {
             List<Korisnik> svi = UcitajSve();
-            svi.RemoveAll(k => k.KorisnickoIme == korisnickoIme);
-            SacuvajSve(svi);
+            List<Korisnik> novi = new List<Korisnik>();
+            foreach (Korisnik k in svi)
+                if (k.KorisnickoIme != korisnickoIme)
+                    novi.Add(k);
+            SacuvajSve(novi);
         }
 
         public Korisnik NadjiPoImenu(string korisnickoIme)
         {
-            return UcitajSve().FirstOrDefault(k => k.KorisnickoIme == korisnickoIme);
+            foreach (Korisnik k in UcitajSve())
+                if (k.KorisnickoIme == korisnickoIme)
+                    return k;
+            return null;
+        }
+
+        public void Ucitaj()
+        {
+            UcitajSve();
+        }
+
+        public void Sacuvaj()
+        {
+            SacuvajSve(UcitajSve());
         }
     }
 }

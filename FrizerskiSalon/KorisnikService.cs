@@ -1,10 +1,6 @@
 ﻿using FrizerskiSalon.Models;
 using FrizerskiSalon.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Services
 {
@@ -12,11 +8,18 @@ namespace FrizerskiSalon.Services
     {
         private KorisniciRepo _repo = new KorisniciRepo();
 
-        public List<Korisnik> SviKorisnici() => _repo.UcitajSve();
+        public List<Korisnik> SviKorisnici()
+        {
+            return _repo.UcitajSve();
+        }
 
         public List<Radnik> SviRadnici()
         {
-            return _repo.UcitajSve().OfType<Radnik>().ToList();
+            List<Radnik> radnici = new List<Radnik>();
+            foreach (Korisnik k in _repo.UcitajSve())
+                if (k is Radnik)
+                    radnici.Add((Radnik)k);
+            return radnici;
         }
 
         public void DodajKorisnika(Korisnik k)

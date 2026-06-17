@@ -2,9 +2,6 @@
 using FrizerskiSalon.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Services
 {
@@ -12,16 +9,27 @@ namespace FrizerskiSalon.Services
     {
         private TerminiRepo _repo = new TerminiRepo();
 
-        public List<Termin> SviTermini() => _repo.UcitajSve();
+        public List<Termin> SviTermini()
+        {
+            return _repo.UcitajSve();
+        }
 
         public List<Termin> TerminiZaKlijenta(string korisnickoIme)
         {
-            return _repo.UcitajSve().Where(t => t.KorisnickoImeKlijenta == korisnickoIme).ToList();
+            List<Termin> rezultat = new List<Termin>();
+            foreach (Termin t in _repo.UcitajSve())
+                if (t.KorisnickoImeKlijenta == korisnickoIme)
+                    rezultat.Add(t);
+            return rezultat;
         }
 
         public List<Termin> TerminiZaRadnika(string korisnickoIme)
         {
-            return _repo.UcitajSve().Where(t => t.KorisnickoImeRadnika == korisnickoIme).ToList();
+            List<Termin> rezultat = new List<Termin>();
+            foreach (Termin t in _repo.UcitajSve())
+                if (t.KorisnickoImeRadnika == korisnickoIme)
+                    rezultat.Add(t);
+            return rezultat;
         }
 
         public void ZakaziTermin(Termin t)

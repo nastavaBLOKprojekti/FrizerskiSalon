@@ -4,9 +4,6 @@ using FrizerskiSalon.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FrizerskiSalon.Services
 {
@@ -16,10 +13,20 @@ namespace FrizerskiSalon.Services
 
         public Dictionary<string, int> BrojTerminaPoRadniku()
         {
-            return _repo.UcitajSve()
-                .Where(t => t.Status == StatusTermina.ODRADJEN)
-                .GroupBy(t => t.KorisnickoImeRadnika)
-                .ToDictionary(g => g.Key, g => g.Count());
+            Dictionary<string, int> rezultat = new Dictionary<string, int>();
+
+            foreach (Termin t in _repo.UcitajSve())
+            {
+                if (t.Status == StatusTermina.ODRADJEN)
+                {
+                    if (rezultat.ContainsKey(t.KorisnickoImeRadnika))
+                        rezultat[t.KorisnickoImeRadnika]++;
+                    else
+                        rezultat[t.KorisnickoImeRadnika] = 1;
+                }
+            }
+
+            return rezultat;
         }
 
         public void ExportUTxt()
