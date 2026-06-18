@@ -65,7 +65,11 @@ namespace FrizerskiSalon.Forms
                 termini = filtrirani;
             }
 
-            termini = termini.Where(t => t.DatumVreme.Date == dateTimePickerFilter.Value.Date).ToList();
+            List<Termin> filtriraniDatum = new List<Termin>();
+            foreach (Termin t in termini)
+                if (t.DatumVreme.Date == dateTimePickerFilter.Value.Date)
+                    filtriraniDatum.Add(t);
+            termini = filtriraniDatum; 
 
             dataGridViewTermini.DataSource = termini;
         }
@@ -76,6 +80,19 @@ namespace FrizerskiSalon.Forms
             comboBoxFilterStatus.SelectedIndex = 0;
             dateTimePickerFilter.Value = DateTime.Now;
             UcitajTermine();
+        }
+
+        private void buttonexport_Click(object sender, EventArgs e)
+        {
+            List<Termin> termini = _terminService.SviTermini();
+            List<string> linije = new List<string>();
+            linije.Add("=== SVI TERMINI ===");
+            linije.Add($"Datum: {DateTime.Now:yyyy-MM-dd HH:mm}");
+            linije.Add("");
+            foreach (Termin t in termini)
+                linije.Add(t.ToString());
+            System.IO.File.WriteAllLines(FrizerskiSalon.Helpers.FilePaths.IzvestajPath, linije);
+            MessageBox.Show("Exportovano!", "Uspeh");
         }
     }
 }

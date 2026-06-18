@@ -36,6 +36,7 @@
             this.dataGridViewTermini = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonexport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTermini)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,12 +112,24 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Status:";
             // 
+            // buttonexport
+            // 
+            this.buttonexport.BackColor = System.Drawing.SystemColors.Info;
+            this.buttonexport.Location = new System.Drawing.Point(460, 281);
+            this.buttonexport.Name = "buttonexport";
+            this.buttonexport.Size = new System.Drawing.Size(89, 23);
+            this.buttonexport.TabIndex = 8;
+            this.buttonexport.Text = "Export u TXT";
+            this.buttonexport.UseVisualStyleBackColor = false;
+            this.buttonexport.Click += new System.EventHandler(this.buttonexport_Click);
+            // 
             // FrmSviTermini
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonexport);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewTermini);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.DataGridView dataGridViewTermini;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonexport;
     }
 }
