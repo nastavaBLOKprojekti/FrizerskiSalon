@@ -47,12 +47,22 @@ namespace FrizerskiSalon.Forms
             List<Termin> termini = _terminService.SviTermini();
 
             if (comboBoxFilterRadnik.SelectedItem.ToString() != "Svi")
-                termini = termini.Where(t => t.KorisnickoImeRadnika == comboBoxFilterRadnik.SelectedItem.ToString()).ToList();
+            {
+                List<Termin> filtrirani = new List<Termin>();
+                foreach (Termin t in termini)
+                    if (t.KorisnickoImeRadnika == comboBoxFilterRadnik.SelectedItem.ToString())
+                        filtrirani.Add(t);
+                termini = filtrirani;
+            }
 
             if (comboBoxFilterStatus.SelectedItem.ToString() != "Svi")
             {
                 StatusTermina status = (StatusTermina)Enum.Parse(typeof(StatusTermina), comboBoxFilterStatus.SelectedItem.ToString());
-                termini = termini.Where(t => t.Status == status).ToList();
+                List<Termin> filtrirani = new List<Termin>();
+                foreach (Termin t in termini)
+                    if (t.Status == status)
+                        filtrirani.Add(t);
+                termini = filtrirani;
             }
 
             termini = termini.Where(t => t.DatumVreme.Date == dateTimePickerFilter.Value.Date).ToList();

@@ -32,17 +32,17 @@ namespace FrizerskiSalon.Forms
                 return;
             }
 
-            Korisnik k = _authService.Prijavi(korisnickoIme, lozinka);
-
-            if (k == null)
+            try
             {
-                MessageBox.Show("Pogrešno korisničko ime ili lozinka.", "Greška");
-                return;
+                Korisnik k = _authService.Prijavi(korisnickoIme, lozinka);
+                FrmGlavna glavna = new FrmGlavna(k);
+                glavna.Show();
+                this.Hide();
             }
-
-            FrmGlavna glavna = new FrmGlavna(k);
-            glavna.Show();
-            this.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greška");
+            }
         }
 
         private void checkBoxprikazi_CheckedChanged(object sender, EventArgs e)
